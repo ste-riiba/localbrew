@@ -2,3 +2,4 @@
 *.cmd text eol=crlf
 
 src/main/resources/static/** linguist-vendored
+uploads/** linguist-generated
