@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - localbrew-network
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: localbrew_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    networks:
+      - localbrew-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  localbrew-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
